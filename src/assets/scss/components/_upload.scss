@@ -1,0 +1,84 @@
+.preview {
+  height: 100%;
+  position: relative;
+  border: 1px solid $gray-300;
+  border-radius: 0.25rem;
+  text-align: center;
+  overflow: hidden;
+}
+
+.previewImage {
+  min-height: 20rem;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.previewResetBtn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 0.25rem;
+  background-color: rgba($dark, 0.5);
+  border-radius: 0 0.25rem 0 0.25rem;
+  color: $white;
+  font-size: 2rem;
+  &:hover {
+    background: $secondary;
+  }
+}
+
+.uploadImageBtn {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3rem;
+  background-color: rgba($dark, 0.5);
+  color: $white;
+  line-height: 3rem;
+  &:hover {
+    background: $secondary;
+  }
+}
+
+.uploadLabel {
+  min-height: 20rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  position: relative;
+  background: $gray-100;
+  border: 1px solid $gray-300;
+  border-radius: 0.25rem;
+  text-align: center;
+  overflow: hidden;
+  color: $gray-600;
+  cursor: pointer;
+  &:hover .uploadLabelMask {
+    background: $secondary;
+  }
+}
+
+.uploadLabelImage {
+  min-height: 20rem;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.uploadLabelMask {
+  height: 3rem;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba($dark, 0.5);
+  color: $white;
+  line-height: 3rem;
+}
