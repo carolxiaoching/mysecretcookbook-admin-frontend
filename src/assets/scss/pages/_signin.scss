@@ -1,13 +1,22 @@
 .signin {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   min-height: calc(100vh - 80px);
 }
 
 .signinForm {
   min-width: 24rem;
+  padding: 3.5rem 2.5rem;
+  background: $white;
+  border-radius: 0.5rem;
+  box-shadow: $box-shadow;
   @media (min-width: 576px) {
     min-width: 30rem;
   }
   @media (min-width: 768px) {
     min-width: 38rem;
+    padding: 3.5rem;
   }
 }
