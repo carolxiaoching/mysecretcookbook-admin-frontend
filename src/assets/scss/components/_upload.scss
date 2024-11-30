@@ -1,0 +1,62 @@
+.uploadLabel {
+  width: 100%;
+  margin-bottom: 1.5rem;
+  border: 1px solid $gray-300;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  @include media-breakpoint-up(xl) {
+    margin-bottom: 3rem;
+  }
+}
+
+.uploadLabelImage {
+  display: block;
+  min-height: 20rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+}
+
+.uploadLabelBtn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 20rem;
+  background: $gray-100;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.preview {
+  position: relative;
+  margin-bottom: 1.5rem;
+  border: 1px solid $gray-300;
+  border-radius: 0.5rem;
+  @include media-breakpoint-up(xl) {
+    margin-bottom: 3rem;
+  }
+}
+
+.previewImage {
+  min-height: 20rem;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 0.5rem;
+}
+
+.previewResetBtn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 0.25rem;
+  background-color: rgba($dark, 0.5);
+  border-radius: 0 0.5rem 0 0.5rem;
+  color: $white;
+  font-size: 2rem;
+  &:hover {
+    background: $secondary;
+  }
+}

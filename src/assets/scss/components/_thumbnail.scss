@@ -1,0 +1,15 @@
+.thumbnail {
+  display: block;
+  width: 3rem;
+  height: 3rem;
+}
+
+.thumbnailDefault {
+  width: 3rem;
+  height: 3rem;
+  background-color: $gray-500;
+  text-align: center;
+  color: $white;
+  font-size: 2rem;
+  line-height: 3rem;
+}

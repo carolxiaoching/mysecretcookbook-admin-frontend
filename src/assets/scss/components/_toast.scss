@@ -1,0 +1,11 @@
+.toast-container {
+  position: fixed;
+  right: 50%;
+  transform: translateX(50%);
+  margin-top: 1rem;
+  padding: 0.25rem;
+  @include media-breakpoint-up(md) {
+    right: 0;
+    transform: translateX(0);
+  }
+}

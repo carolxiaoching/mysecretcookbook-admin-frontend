@@ -1,0 +1,23 @@
+.signin {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 80px);
+}
+
+.signinForm {
+  min-width: 20rem;
+  padding: 3rem 1rem;
+  background: $white;
+  border-radius: 0.5rem;
+  box-shadow: $box-shadow;
+  @include media-breakpoint-up(sm) {
+    min-width: 30rem;
+    padding: 3.5rem 2.5rem;
+  }
+  @include media-breakpoint-up(md) {
+    min-width: 38rem;
+    padding: 3.5rem;
+  }
+}

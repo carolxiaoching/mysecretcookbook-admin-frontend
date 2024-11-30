@@ -1,0 +1,50 @@
+.sidebar {
+  background-color: $primary;
+  @include media-breakpoint-up(xl) {
+    position: fixed;
+    width: 18rem;
+    min-height: 100vh;
+  }
+}
+
+.menu {
+  margin: 2rem 1.5rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+.menuItem {
+  margin-bottom: 0.75rem;
+}
+
+.menuTitle {
+  color: $gray-500;
+  letter-spacing: 0.5rem;
+}
+
+.menuLink {
+  display: block;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  color: $white;
+  &:hover,
+  &:focus {
+    opacity: 0.75;
+  }
+  &.active {
+    background: rgba($secondary, 0.75);
+    opacity: 1;
+  }
+}
+
+.main {
+  min-height: calc(100vh - 3.75rem);
+  display: flex;
+  flex-direction: column;
+  padding: 3rem 1rem;
+  @include media-breakpoint-up(xl) {
+    margin-left: 18rem;
+    min-height: 100vh;
+    padding: 3rem;
+  }
+}
