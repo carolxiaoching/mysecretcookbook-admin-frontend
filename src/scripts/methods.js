@@ -1,5 +1,5 @@
 import { ref, onMounted } from 'vue';
-import { Modal } from 'bootstrap';
+import Modal from 'bootstrap/js/dist/modal';
 
 // Modal
 export function useModal(modalRef) {
