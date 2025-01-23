@@ -1,5 +1,10 @@
 <template>
-  <VForm class="col-12 col-xxl-8" ref="form" v-slot="{ errors }" @submit="updateStep(4)">
+  <VForm
+    class="col-12 col-xxl-8"
+    ref="form"
+    v-slot="{ errors }"
+    @submit="$emit('update-step', { step: 4, data: tempRecipeData })"
+  >
     <div class="mb-16 p-14 p-md-16 bg-white rounded shadow-sm">
       <h2 class="title mb-11">
         <span class="title-icon bg-secondary-subtle">
@@ -96,7 +101,7 @@
       <button
         type="button"
         class="btn btn-outline-primary w-100 mb-8 mb-md-0 me-md-16"
-        @click.prevent="updateStep(2)"
+        @click.prevent="$emit('update-step', { step: 2, data: tempRecipeData })"
       >
         <i class="bi bi-arrow-90deg-left me-8"></i>
         上一步
@@ -141,11 +146,6 @@ watch(
   },
   { immediate: true, deep: true }
 );
-
-const emit = defineEmits(['update-step']);
-function updateStep(step) {
-  emit('update-step', { step, data: tempRecipeData.value });
-}
 
 function removeDraggableItem(delType, delItem) {
   const { steps } = tempRecipeData.value;

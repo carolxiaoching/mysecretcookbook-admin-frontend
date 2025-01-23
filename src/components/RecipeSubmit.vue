@@ -1,7 +1,6 @@
 <template>
   <div class="col-12 col-xxl-8">
-    <div class="alert alert-danger" role="alert" v-if="errorMessage">{{ errorMessage }}</div>
-
+    <div class="alert alert-danger mb-16" role="alert" v-if="errorMessage">{{ errorMessage }}</div>
     <div class="table-responsive mb-16 p-14 p-md-16 bg-white rounded shadow-sm">
       <table class="table recipeTable">
         <tbody>
@@ -102,7 +101,7 @@
       <button
         type="button"
         class="btn btn-outline-primary w-100 mb-8 mb-md-0 me-md-16"
-        @click.prevent="updateStep(3)"
+        @click.prevent="$emit('update-step', { step: 3, data: tempRecipeData })"
       >
         <i class="bi bi-arrow-90deg-left me-8"></i>
         上一步
@@ -177,11 +176,6 @@ watch(
   { immediate: true, deep: true }
 );
 
-const emit = defineEmits(['update-step']);
-function updateStep(step) {
-  emit('update-step', { step, data: props.tempRecipe.value });
-}
-
 async function updateRecipe() {
   props.tempRecipe.steps.forEach((item, index) => {
     item.stepOrder = index + 1;
@@ -206,8 +200,6 @@ async function updateRecipe() {
     alertModalRef.value?.openModal();
     closeLoading();
   } catch (err) {
-    console.log(err);
-
     pushMessage({
       style: 'danger',
       title: `${msg}失敗`,

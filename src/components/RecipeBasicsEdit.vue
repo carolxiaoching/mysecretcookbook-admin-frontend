@@ -1,5 +1,10 @@
 <template>
-  <VForm class="col-12 col-xxl-8" ref="form" v-slot="{ errors }" @submit="updateStep(2)">
+  <VForm
+    class="col-12 col-xxl-8"
+    ref="form"
+    v-slot="{ errors }"
+    @submit="$emit('update-step', { step: 2, data: tempRecipeData })"
+  >
     <div
       class="d-flex flex-column mb-16 p-14 p-md-16 bg-white rounded shadow-sm"
       :class="{ 'border border-danger': errors['食譜封面'] }"
@@ -274,11 +279,6 @@ watch(
   },
   { immediate: true, deep: true }
 );
-
-const emit = defineEmits(['update-step']);
-function updateStep(step) {
-  emit('update-step', { step, data: tempRecipeData.value });
-}
 
 // 更新圖片
 function uploadImage(imageUrl) {
