@@ -107,7 +107,7 @@ import { apiGetRecipes, apiGetCategories, apiGetTags, apiDelRecipe } from '@/scr
 import { loadingStore, messageStore } from '@/stores/index';
 import Pagination from '@/components/PaginationComponent.vue';
 import DelModal from '@/components/DelModal.vue';
-import { getPageDataAndPagination, getCategoryName, getTagName } from '@/scripts/methods';
+import { getCategoryName, getTagName } from '@/scripts/methods';
 
 const loadingRef = loadingStore();
 const messageRef = messageStore();
@@ -128,20 +128,10 @@ async function getRecipes(page = 1) {
   openLoading();
 
   try {
-    const res = await apiGetRecipes();
-    const { data, status } = res.data;
+    const res = await apiGetRecipes({ page });
+    recipes.value = res.data.data.results;
+    pagination.value = res.data.data.pagination;
 
-    if (status === 'success') {
-      const pageResult = getPageDataAndPagination(data, page);
-      recipes.value = pageResult.result;
-      pagination.value = pageResult.pagination;
-    } else {
-      pushMessage({
-        style: 'danger',
-        title: '載入失敗',
-        text: '載入失敗，請重整網頁',
-      });
-    }
     closeLoading();
   } catch (err) {
     pushMessage({
@@ -157,8 +147,8 @@ async function getData() {
   openLoading();
 
   try {
-    const tagsResponse = await apiGetTags();
-    const categoriesResponse = await apiGetCategories();
+    const tagsResponse = await apiGetTags({ noPagination: true });
+    const categoriesResponse = await apiGetCategories({ noPagination: true });
 
     tags.value = tagsResponse.data.data;
     categories.value = categoriesResponse.data.data;

@@ -62,7 +62,6 @@ import { loadingStore, messageStore } from '@/stores/index';
 import Pagination from '@/components/PaginationComponent.vue';
 import DelModal from '@/components/DelModal.vue';
 import TagEditModal from '@/components/TagEditModal.vue';
-import { getPageDataAndPagination } from '@/scripts/methods';
 
 const loadingRef = loadingStore();
 const messageRef = messageStore();
@@ -88,20 +87,9 @@ async function getTags(page = 1) {
   openLoading();
 
   try {
-    const res = await apiGetTags();
-    const { data, status } = res.data;
-
-    if (status === 'success') {
-      const pageResult = getPageDataAndPagination(data, page);
-      tags.value = pageResult.result;
-      pagination.value = pageResult.pagination;
-    } else {
-      pushMessage({
-        style: 'danger',
-        title: '載入失敗',
-        text: '載入失敗，請重整網頁',
-      });
-    }
+    const res = await apiGetTags({ page });
+    tags.value = res.data.data.results;
+    pagination.value = res.data.data.pagination;
     closeLoading();
   } catch (err) {
     pushMessage({

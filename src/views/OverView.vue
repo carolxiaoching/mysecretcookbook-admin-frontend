@@ -209,10 +209,10 @@ const chartSections = ref([
 async function getData() {
   try {
     openLoading();
-    const membersResponse = await apiGetMembers();
-    const recipesResponse = await apiGetRecipes();
-    const categoriesResponse = await apiGetCategories();
-    const tagsResponse = await apiGetTags();
+    const membersResponse = await apiGetMembers({ noPagination: true });
+    const recipesResponse = await apiGetRecipes({ noPagination: true });
+    const categoriesResponse = await apiGetCategories({ noPagination: true });
+    const tagsResponse = await apiGetTags({ noPagination: true });
 
     members.value = membersResponse.data.data;
     recipes.value = recipesResponse.data.data;

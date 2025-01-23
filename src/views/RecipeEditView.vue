@@ -133,8 +133,8 @@ async function getData() {
   openLoading();
 
   try {
-    const tagsResponse = await apiGetTags();
-    const categoriesResponse = await apiGetCategories();
+    const tagsResponse = await apiGetTags({ noPagination: true });
+    const categoriesResponse = await apiGetCategories({ noPagination: true });
 
     tags.value = tagsResponse.data.data;
     categories.value = categoriesResponse.data.data;

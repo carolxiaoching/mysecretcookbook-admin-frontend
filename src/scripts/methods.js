@@ -54,40 +54,6 @@ export const getTime = (time) => {
   return `${year}/${month}/${date} ${hour}:${minutes}`;
 };
 
-// 取得頁碼與此頁資料
-export function getPageDataAndPagination(data, nowPage = 1) {
-  // 每頁幾筆
-  const perPage = 10;
-
-  // 資料總數
-  const totalResult = data.length;
-
-  // 總共有幾頁
-  const totalPage = Math.ceil(totalResult / perPage);
-
-  // 若 totalPage 小於等於 perPage，則所在頁面變為 totalPage 頁，否則就依照傳入 nowPage 參數
-  const currentPage = totalPage <= nowPage ? totalPage : nowPage;
-
-  // 此頁數最小為資料為第x筆
-  const minItem = currentPage * perPage - perPage + 1;
-  // 此頁數最大資料為第x筆
-  const maxItem = currentPage * perPage;
-
-  // 取得此頁面資料
-  const result = data.filter((item, i) => i + 1 >= minItem && i + 1 <= maxItem);
-  const pagination = {
-    totalPage,
-    currentPage,
-    hasPrev: currentPage > 1,
-    hasNext: currentPage < totalPage,
-  };
-
-  return {
-    result,
-    pagination,
-  };
-}
-
 // 利用分類 ID 取得分類名稱
 export function getCategoryName(categoriesValue, categoryId) {
   const category = categoriesValue.find((item) => item._id === categoryId);

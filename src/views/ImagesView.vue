@@ -82,7 +82,6 @@ import { loadingStore, messageStore } from '@/stores/index';
 import Pagination from '@/components/PaginationComponent.vue';
 import DelModal from '@/components/DelModal.vue';
 import ImageModal from '@/components/ImageModal.vue';
-import { getPageDataAndPagination } from '@/scripts/methods';
 
 const loadingRef = loadingStore();
 const messageRef = messageStore();
@@ -111,20 +110,9 @@ const tempImage = ref({
 async function getImages(page = 1) {
   openLoading();
   try {
-    const res = await apiGetImages();
-    const { data, status } = res.data;
-
-    if (status === 'success') {
-      const pageResult = getPageDataAndPagination(data, page);
-      images.value = pageResult.result;
-      pagination.value = pageResult.pagination;
-    } else {
-      pushMessage({
-        style: 'danger',
-        title: '載入失敗',
-        text: '載入失敗，請重整網頁',
-      });
-    }
+    const res = await apiGetImages({ page });
+    images.value = res.data.data.results;
+    pagination.value = res.data.data.pagination;
     closeLoading();
   } catch (err) {
     pushMessage({

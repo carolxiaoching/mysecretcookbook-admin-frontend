@@ -65,7 +65,6 @@ import { loadingStore, messageStore } from '@/stores/index';
 import Pagination from '@/components/PaginationComponent.vue';
 import DelModal from '@/components/DelModal.vue';
 import CategoryEditModal from '@/components/CategoryEditModal.vue';
-import { getPageDataAndPagination } from '@/scripts/methods';
 
 const loadingRef = loadingStore();
 const messageRef = messageStore();
@@ -91,20 +90,9 @@ async function getCategories(page = 1) {
   openLoading();
 
   try {
-    const res = await apiGetCategories();
-    const { data, status } = res.data;
-
-    if (status === 'success') {
-      const pageResult = getPageDataAndPagination(data, page);
-      categories.value = pageResult.result;
-      pagination.value = pageResult.pagination;
-    } else {
-      pushMessage({
-        style: 'danger',
-        title: '載入失敗',
-        text: '載入失敗，請重整網頁',
-      });
-    }
+    const res = await apiGetCategories({ page });
+    categories.value = res.data.data.results;
+    pagination.value = res.data.data.pagination;
     closeLoading();
   } catch (err) {
     pushMessage({
