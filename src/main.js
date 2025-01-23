@@ -23,6 +23,7 @@ import router from './router';
 Object.entries(all).forEach(([name, rule]) => {
   defineRule(name, rule);
 });
+
 defineRule('password', (value, [limit]) => {
   if (value.length < limit) {
     return `密碼 不能小於 ${limit} 字元`;
@@ -33,6 +34,18 @@ defineRule('password', (value, [limit]) => {
   }
   return true;
 });
+
+defineRule('maxTagArrayLength', (value, [max]) => {
+  if (!Array.isArray(value)) {
+    return '標籤格式錯誤';
+  }
+
+  if (value.length > max) {
+    return `每個食譜最多只能有 ${max} 個標籤`;
+  }
+  return true;
+});
+
 configure({
   generateMessage: localize({
     zh_TW: zhTw, // 載入繁體中文語系

@@ -2,9 +2,8 @@
   <VForm class="col-12 col-xxl-8" ref="form" v-slot="{ errors }" @submit="updateStep(2)">
     <div
       class="d-flex flex-column mb-16 p-14 p-md-16 bg-white rounded shadow-sm"
-      :class="{ 'border border-danger': coverImgUrlError && tempRecipeData.coverImgUrl === '' }"
+      :class="{ 'border border-danger': errors['食譜封面'] }"
       tabindex="0"
-      ref="coverImgUrlRef"
     >
       <h2 class="title mb-11">
         <span class="title-icon bg-secondary-subtle">
@@ -13,9 +12,18 @@
         <span> 食譜封面</span>
         <span class="text-danger fs-6">(必填) </span>
       </h2>
-      <p class="mb-4 text-center text-danger" v-if="coverImgUrlError">
-        <small> 請設定圖片 </small>
-      </p>
+      <VField
+        type="text"
+        id="coverImgUrl"
+        class="d-none"
+        name="食譜封面"
+        v-model="tempRecipeData.coverImgUrl"
+        rules="required"
+        required
+      />
+      <ErrorMessage name="食譜封面" v-slot="{ message }">
+        <p class="mb-4 text-center text-danger">{{ message }}</p>
+      </ErrorMessage>
       <div class="flex-fill mx-lg-16">
         <UploadComponent
           :temp-image-url="tempRecipeData.coverImgUrl"
@@ -162,7 +170,10 @@
       </div>
     </div>
 
-    <div class="p-14 p-md-16 bg-white rounded shadow-sm mb-16">
+    <div
+      class="p-14 p-md-16 bg-white rounded shadow-sm mb-16"
+      :class="{ 'border border-danger': errors['食譜標籤'] }"
+    >
       <h2 class="title mb-11">
         <span class="title-icon bg-secondary-subtle">
           <i class="bi bi-bookmarks-fill"></i>
@@ -172,17 +183,22 @@
       </h2>
       <div class="mx-lg-16 text-center">
         <div class="d-sm-inline-block m-2" v-for="item in tags" :key="item._id">
-          <input
+          <VField
+            name="食譜標籤"
             type="checkbox"
             class="btn-check"
             :id="item._id"
             :value="item._id"
             v-model="tempRecipeData.tags"
+            rules="maxTagArrayLength:3"
           />
           <label :for="item._id" class="btn btn-outline-primary w-100 text-nowrap">
             {{ item.title }}
           </label>
         </div>
+        <ErrorMessage name="食譜標籤" v-slot="{ message }">
+          <p class="mt-8 text-danger">{{ message }}</p>
+        </ErrorMessage>
       </div>
     </div>
 
@@ -213,8 +229,6 @@ const tempRecipeData = ref({
   servings: 1,
   tags: [],
 });
-const coverImgUrlError = ref(false);
-const coverImgUrlRef = ref(null);
 
 const props = defineProps({
   recipe: {
@@ -263,11 +277,6 @@ watch(
 
 const emit = defineEmits(['update-step']);
 function updateStep(step) {
-  if (tempRecipeData.value.coverImgUrl === '') {
-    coverImgUrlError.value = true;
-    coverImgUrlRef.value.focus();
-    return;
-  }
   emit('update-step', { step, data: tempRecipeData.value });
 }
 
