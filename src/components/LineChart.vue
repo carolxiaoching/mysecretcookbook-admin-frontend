@@ -10,10 +10,13 @@
 <script setup>
 import { ref, watch } from 'vue';
 import VueApexCharts from 'vue3-apexcharts';
+import { getMonthArray } from '@/scripts/methods';
 
 const membersChart = ref(null);
 const tempMembers = ref([]);
+const categories = getMonthArray();
 
+// 圖表選項
 const membersOptions = ref({
   tooltip: {
     enabled: false,
@@ -35,20 +38,7 @@ const membersOptions = ref({
     enabled: true,
   },
   xaxis: {
-    categories: [
-      '1月',
-      '2月',
-      '3月',
-      '4月',
-      '5月',
-      '6月',
-      '7月',
-      '8月',
-      '9月',
-      '10月',
-      '11月',
-      '12月',
-    ],
+    categories: categories.map((item) => `${item.year}/${item.month}`),
   },
 });
 
@@ -62,11 +52,20 @@ function updateChart() {
 
   tempMembers.value.forEach((member) => {
     const date = new Date(member.createdAt);
-    // 取得食譜的月份 (0-11)
-    const month = date.getMonth();
+    // 取得食譜的年份
+    const memberYear = date.getFullYear();
+    // 取得食譜的月份
+    const memberMonth = date.getMonth() + 1;
 
-    // 該月份的會員數量加1
-    newSeries.data[month] += 1;
+    // 檢查年月是否在範圍內
+    const index = categories.findIndex(
+      (item) => item.year === memberYear && item.month === memberMonth
+    );
+
+    // 更新對應年月的資料
+    if (index !== -1) {
+      newSeries.data[index] += 1;
+    }
   });
 
   // 渲染畫面

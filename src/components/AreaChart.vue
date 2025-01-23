@@ -10,11 +10,12 @@
 <script setup>
 import { ref, watch } from 'vue';
 import VueApexCharts from 'vue3-apexcharts';
-import { getCategoryName } from '@/scripts/methods';
+import { getCategoryName, getMonthArray } from '@/scripts/methods';
 
 const recipesChart = ref(null);
 const tempCategories = ref([]);
 const tempRecipes = ref([]);
+const categories = getMonthArray();
 
 const recipesOptions = ref({
   chart: {
@@ -34,20 +35,7 @@ const recipesOptions = ref({
     enabled: false,
   },
   xaxis: {
-    categories: [
-      '1月',
-      '2月',
-      '3月',
-      '4月',
-      '5月',
-      '6月',
-      '7月',
-      '8月',
-      '9月',
-      '10月',
-      '11月',
-      '12月',
-    ],
+    categories: categories.map((item) => `${item.year}/${item.month}`),
   },
 });
 
@@ -61,21 +49,27 @@ function updateChart() {
 
   tempRecipes.value.forEach((recipe) => {
     const date = new Date(recipe.createdAt);
-    // 取得食譜的月份 (0-11)
-    const month = date.getMonth();
+    // 取得食譜的年份
+    const memberYear = date.getFullYear();
+    // 取得食譜的月份
+    const memberMonth = date.getMonth() + 1;
 
     // 找到對應的分類名稱
     const categoryName = getCategoryName(tempCategories.value, recipe.category);
 
-    // 取得第幾筆
-    const index = newSeries.findIndex((item) => {
-      return item.name === categoryName;
-    });
+    // 找到對應分類的 index
+    const categoryIndex = newSeries.findIndex((item) => item.name === categoryName);
 
-    // 若有資料則更新資料
-    if (index !== -1) {
-      // 該月份的食譜數量+1
-      newSeries[index].data[month] += 1;
+    if (categoryIndex !== -1) {
+      // 找到對應年月的 index
+      const index = categories.findIndex(
+        (item) => item.year === memberYear && item.month === memberMonth
+      );
+
+      // 更新對應年月的資料
+      if (index !== -1) {
+        newSeries[categoryIndex].data[index] += 1;
+      }
     }
   });
 

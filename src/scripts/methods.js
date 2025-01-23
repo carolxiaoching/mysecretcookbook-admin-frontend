@@ -65,3 +65,20 @@ export function getTagName(tagsValue, tagId) {
   const tag = tagsValue.find((item) => item._id === tagId);
   return tag ? tag.title : '';
 }
+
+// 取得當月份前後六個月的陣列
+export function getMonthArray() {
+  const monthArray = [];
+  const currentDate = new Date();
+  const currentMonth = currentDate.getMonth();
+  const currentYear = currentDate.getFullYear();
+
+  for (let i = -6; i <= 6; i++) {
+    const date = new Date(currentYear, currentMonth + i);
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    monthArray.push({ year, month });
+  }
+
+  return monthArray;
+}
