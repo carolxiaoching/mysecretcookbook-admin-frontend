@@ -7,7 +7,7 @@
     </router-link>
   </div>
   <div class="table-responsive">
-    <table class="table align-middle">
+    <table class="table align-middle mb-14">
       <thead>
         <tr class="table-active">
           <th class="d-none d-md-table-cell text-center" width="120">ID 編號</th>
@@ -16,7 +16,7 @@
           <th class="d-none d-xxl-table-cell text-center" width="160">標籤</th>
           <th class="d-none d-xxl-table-cell text-center" width="80">收藏人數</th>
           <th class="d-none d-lg-table-cell text-center" width="120">發布者</th>
-          <th class="d-none d-xxl-table-cell text-center" width="120">是否啟用</th>
+          <th class="d-none d-xxl-table-cell text-center" width="120">公開狀態</th>
           <th class="d-none d-xxl-table-cell text-center" width="120">建立時間</th>
           <th class="d-none d-xxl-table-cell text-center" width="120">更新時間</th>
           <th class="text-center" width="200">編輯</th>
@@ -38,7 +38,7 @@
             {{ getCategoryName(categories, item.category) }}
           </td>
           <td class="d-none d-xxl-table-cell text-center">
-            <ul class="d-flex flex-wrap list-unstyled">
+            <ul class="d-flex flex-wrap mb-0 list-unstyled">
               <li class="me-4 fs-6" v-for="tagItem in item.tags" :key="tagItem">
                 <span class="badge text-bg-secondary">
                   {{ getTagName(tags, tagItem) }}
@@ -62,12 +62,13 @@
           </td>
           <td class="d-none d-xxl-table-cell text-center">
             <span
+              class="badge"
               :class="{
-                'text-success text-opacity-75': item.isPublic,
-                'text-muted': !item.isPublic,
+                'text-bg-primary': item.isPublic,
+                'text-bg-light': !item.isPublic,
               }"
             >
-              {{ item.isPublic ? '啟用' : '未啟用' }}
+              {{ item.isPublic ? '公開' : '私人' }}
             </span>
           </td>
 
