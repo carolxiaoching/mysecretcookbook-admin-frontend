@@ -15,6 +15,14 @@ import Toast from '@/components/ToastComponent.vue';
 
 const loadingRef = loadingStore();
 const { isLoading } = storeToRefs(loadingRef);
+
+// 解決 Bootstrap Modal 關閉後焦點問題
+// https://github.com/twbs/bootstrap/issues/41005
+window.addEventListener('hide.bs.modal', () => {
+  if (document.activeElement instanceof HTMLElement) {
+    document.activeElement.blur();
+  }
+});
 </script>
 
 <style lang="scss">
