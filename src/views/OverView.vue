@@ -41,7 +41,7 @@
               <span> 最新會員 </span>
             </h2>
             <div class="d-none d-md-block ms-auto">
-              <router-link to="/admin/members" class="link-primary text-decoration-underline">
+              <router-link to="/dashboard/members" class="link-primary text-decoration-underline">
                 看更多
                 <i class="bi bi-arrow-right-short"></i>
               </router-link>
@@ -91,7 +91,7 @@
               <span> 最新食譜 </span>
             </h2>
             <div class="d-none d-md-block ms-auto">
-              <router-link to="/admin/recipes" class="link-primary text-decoration-underline">
+              <router-link to="/dashboard/recipes" class="link-primary text-decoration-underline">
                 看更多
                 <i class="bi bi-arrow-right-short"></i>
               </router-link>
