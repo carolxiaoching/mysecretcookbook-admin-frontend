@@ -7,6 +7,14 @@ export function useModal(modalRef) {
 
   onMounted(() => {
     modal.value = new Modal(modalRef.value);
+
+    // 解決 Bootstrap Modal 關閉後焦點問題
+    // https://github.com/twbs/bootstrap/issues/41005
+    modalRef.value.addEventListener('hide.bs.modal', () => {
+      if (document.activeElement instanceof HTMLElement) {
+        document.activeElement.blur();
+      }
+    });
   });
 
   const openModal = () => {
