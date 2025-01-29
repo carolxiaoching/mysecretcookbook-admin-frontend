@@ -46,7 +46,7 @@
               </li>
             </ul>
           </td>
-          <td class="d-none d-xxl-table-cell text-center">{{ item.collects.length }}</td>
+          <td class="d-none d-xxl-table-cell text-center">{{ item.collectsCount }}</td>
           <td class="d-none d-lg-table-cell text-center">
             <div class="d-flex align-items-center">
               <img
