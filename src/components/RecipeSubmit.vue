@@ -176,6 +176,10 @@ watch(
   { immediate: true, deep: true }
 );
 
+// 定義 'update-step' 事件，避免父組件的事件傳入 AlertModal
+// 解決 Vue 警告：'Extraneous non-emits event listeners'
+defineEmits(['update-step']);
+
 async function updateRecipe() {
   props.tempRecipe.steps.forEach((item, index) => {
     item.stepOrder = index + 1;
