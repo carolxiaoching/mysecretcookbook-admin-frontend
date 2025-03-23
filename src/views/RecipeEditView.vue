@@ -108,6 +108,7 @@ const tempRecipe = ref({
   tags: [],
 });
 
+// 更新步驟
 function updateStep(item) {
   Object.assign(tempRecipe.value, item.data);
   step.value = item.step;
@@ -141,6 +142,7 @@ async function getRecipe(id) {
   }
 }
 
+// 取得頁面所需資料
 async function getData() {
   openLoading();
 

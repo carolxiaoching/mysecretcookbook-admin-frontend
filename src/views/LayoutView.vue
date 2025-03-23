@@ -130,6 +130,7 @@ const messageRef = messageStore();
 const { pushMessage } = messageRef;
 const signInStatus = ref(false);
 
+// 登出
 function signOut() {
   clearToken();
   pushMessage({
@@ -140,6 +141,7 @@ function signOut() {
   router.push('/signin');
 }
 
+// 確認是否登入
 function checkSignInStatus() {
   // 取得 token
   const token = getToken();

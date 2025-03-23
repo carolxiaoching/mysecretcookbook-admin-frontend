@@ -147,6 +147,7 @@ watch(
   { immediate: true, deep: true }
 );
 
+// 移除步驟
 function removeDraggableItem(delType, delItem) {
   const { steps } = tempRecipeData.value;
 
@@ -160,6 +161,7 @@ function removeDraggableItem(delType, delItem) {
   }
 }
 
+// 新增步驟
 function addDraggableItem() {
   tempRecipeData.value.steps.push({
     stepContent: '',

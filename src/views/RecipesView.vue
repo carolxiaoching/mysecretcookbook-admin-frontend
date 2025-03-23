@@ -144,6 +144,7 @@ async function getRecipes(page = 1) {
   }
 }
 
+// 取得頁面所需資料
 async function getData() {
   openLoading();
 

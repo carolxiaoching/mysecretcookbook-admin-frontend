@@ -254,12 +254,14 @@ watch(
   { immediate: true, deep: true }
 );
 
+// 移除食材
 function removeDraggableItem(index) {
   if (tempRecipeData.value.ingredients.length > 1) {
     tempRecipeData.value.ingredients.splice(index, 1);
   }
 }
 
+// 新增食材
 function addDraggableItem() {
   tempRecipeData.value.ingredients.push({
     ingredientName: '',

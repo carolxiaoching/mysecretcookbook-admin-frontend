@@ -9,7 +9,7 @@
     <VForm
       class="signinForm px-8 px-sm-16 px-md-18 py-17 py-sm-18 bg-white rounded-3 shadow"
       v-slot="{ errors, meta }"
-      @submit="submitForm"
+      @submit="signIn"
       ref="form"
     >
       <h1 class="mb-11 text-center h3">管理員介面</h1>
@@ -99,7 +99,8 @@ const user = ref({
   password: '',
 });
 
-async function submitForm() {
+// 登入
+async function signIn() {
   openLoading();
 
   try {

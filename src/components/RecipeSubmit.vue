@@ -180,6 +180,7 @@ watch(
 // 解決 Vue 警告：'Extraneous non-emits event listeners'
 defineEmits(['update-step']);
 
+// 新增/更新 食譜
 async function updateRecipe() {
   props.tempRecipe.steps.forEach((item, index) => {
     item.stepOrder = index + 1;
@@ -214,6 +215,7 @@ async function updateRecipe() {
   }
 }
 
+// 關閉 modal
 function closeSuccesModal() {
   alertModalRef.value?.hideModal();
   router.push('/dashboard/recipes');
