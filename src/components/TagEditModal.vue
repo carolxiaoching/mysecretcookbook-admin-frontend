@@ -18,7 +18,7 @@
         >
           <div class="p-11">
             <h1 class="modal-title title mb-8" id="tagEditModalLabel">
-              <span class="title-icon bg-dark-subtl">
+              <span class="titleIcon bg-dark-subtl">
                 <i class="bi bi-pencil-fill"></i>
               </span>
               <slot name="modal-header">標題</slot>

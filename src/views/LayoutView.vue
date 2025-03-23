@@ -1,6 +1,6 @@
 <template>
   <div class="position-relative">
-    <aside class="sidebar">
+    <aside class="sidebar bg-primary">
       <div class="d-flex justify-content-between justify-content-xl-center align-items-center">
         <router-link to="/signin" class="d-block px-8 py-5 text-center">
           <img src="../assets/images/logo-white.svg" alt="logo" class="mw-100" />
@@ -36,59 +36,72 @@
           ></button>
         </div>
         <div class="offcanvas-body d-flex flex-column justify-content-between h-100">
-          <ul class="menu">
-            <li class="menuItem">
-              <p class="menuTitle">選單</p>
+          <ul class="list-unstyled mx-11 mt-14 mb-0 p-0">
+            <li class="mb-6">
+              <p class="textLsLg text-muted">選單</p>
             </li>
-            <li class="menuItem">
-              <router-link to="/dashboard" class="menuLink">
+            <li class="mb-6">
+              <router-link to="/dashboard" class="menuLink d-block px-8 py-4 rounded-2 text-white">
                 <i class="bi bi-speedometer me-8"></i>
                 控制台
               </router-link>
             </li>
-            <li class="menuItem">
+            <li class="mb-6">
               <router-link
                 to="/dashboard/members"
-                class="menuLink"
+                class="menuLink d-block px-8 py-4 rounded-2 text-white"
                 :class="{ active: $route.name === 'memberEdit' }"
               >
                 <i class="bi bi-people-fill me-8"></i>
                 會員管理
               </router-link>
             </li>
-            <li class="menuItem">
-              <router-link to="/dashboard/categories" class="menuLink">
+            <li class="mb-6">
+              <router-link
+                to="/dashboard/categories"
+                class="menuLink d-block px-8 py-4 rounded-2 text-white"
+              >
                 <i class="bi bi-columns-gap me-8"></i>
                 分類管理
               </router-link>
             </li>
-            <li class="menuItem">
-              <router-link to="/dashboard/tags" class="menuLink">
+            <li class="mb-6">
+              <router-link
+                to="/dashboard/tags"
+                class="menuLink d-block px-8 py-4 rounded-2 text-white"
+              >
                 <i class="bi bi-bookmarks me-8"></i>
                 標籤管理
               </router-link>
             </li>
-            <li class="menuItem">
+            <li class="mb-6">
               <router-link
                 to="/dashboard/recipes"
-                class="menuLink"
+                class="menuLink d-block px-8 py-4 rounded-2 text-white"
                 :class="{ active: $route.name === 'recipeEdit' }"
               >
                 <i class="bi bi-cookie me-8"></i>
                 食譜管理
               </router-link>
             </li>
-            <li class="menuItem">
-              <router-link to="/dashboard/images" class="menuLink">
+            <li class="mb-6">
+              <router-link
+                to="/dashboard/images"
+                class="menuLink d-block px-8 py-4 rounded-2 text-white"
+              >
                 <i class="bi bi-image me-8"></i>
                 圖片管理
               </router-link>
             </li>
-            <li class="menuItem">
-              <p class="menuTitle">其他</p>
+            <li class="mb-6">
+              <p class="textLsLg text-muted">其他</p>
             </li>
-            <li class="menuItem">
-              <a href="#" class="menuLink" @click.prevent="signOut">
+            <li class="mb-6">
+              <a
+                href="#"
+                class="menuLink d-block px-8 py-4 rounded-2 text-white"
+                @click.prevent="signOut"
+              >
                 <i class="bi bi-door-open-fill me-8"></i>
                 登出
               </a>
@@ -97,7 +110,7 @@
         </div>
       </div>
     </aside>
-    <main class="main">
+    <main class="main d-flex flex-column px-8 py-17 px-xl-17">
       <RouterView v-if="signInStatus" />
     </main>
   </div>

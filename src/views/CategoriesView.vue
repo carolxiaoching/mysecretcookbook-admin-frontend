@@ -20,7 +20,10 @@
       <tbody>
         <tr v-for="item in categories" :key="item._id">
           <td class="d-none d-sm-table-cell text-center">#{{ item._id.slice(-5) }}</td>
-          <td class="text-center">{{ item.title }}</td>
+          <td class="d-flex flex-column flex-md-row justify-content-center align-items-center">
+            <img :src="item.categoryImgUrl" class="thumbnail me-4" />
+            {{ item.title }}
+          </td>
           <td class="d-none d-xxl-table-cell text-center">{{ $getTime(item.createdAt) }}</td>
           <td class="d-none d-xxl-table-cell text-center">{{ $getTime(item.updatedAt) }}</td>
           <td class="text-center">
@@ -81,6 +84,7 @@ const delData = ref({
 const tempCategory = ref({
   id: '',
   title: '',
+  categoryImgUrl: '',
   createdAt: '',
   updatedAt: '',
 });
@@ -154,6 +158,7 @@ function openCategoryEditModal(action, item) {
     tempCategory.value = {
       id: '',
       title: '',
+      categoryImgUrl: '',
       createdAt: '',
       updatedAt: '',
     };
@@ -161,6 +166,7 @@ function openCategoryEditModal(action, item) {
     tempCategory.value = {
       id: item._id,
       title: item.title,
+      categoryImgUrl: item.categoryImgUrl,
       createdAt: item.createdAt,
       updatedAt: item.updatedAt,
     };

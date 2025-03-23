@@ -7,7 +7,7 @@
       <div class="col-12 col-xxl-6 mb-16">
         <div class="d-flex flex-column h-100 py-16 px-14 px-md-16 bg-white rounded shadow-sm">
           <h2 class="title mb-11">
-            <span class="title-icon bg-secondary-subtle">
+            <span class="titleIcon bg-secondary-subtle">
               <i class="bi bi-image-fill"></i>
             </span>
             <span> 會員頭像 </span>
@@ -24,7 +24,7 @@
       <div class="col-12 col-xxl-6 mb-16">
         <div class="p-14 p-md-16 bg-white shadow-sm rounded">
           <h2 class="title mb-11">
-            <span class="title-icon bg-secondary-subtle">
+            <span class="titleIcon bg-secondary-subtle">
               <i class="bi bi-image-fill"></i>
             </span>
             <span> 基本資料 </span>

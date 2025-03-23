@@ -1,3 +1,4 @@
+// 修改原本 bootstrap primary 按鈕樣式
 .btn-primary,
 .btn-outline-primary {
   --bs-btn-hover-color: var(--bs-white);
@@ -9,6 +10,7 @@
   --bs-btn-active-border-color: #{shade-color($secondary, 20%)};
 }
 
+// disabled 按鈕樣式設定
 .btn.disabled:disabled {
   pointer-events: auto;
   cursor: not-allowed;

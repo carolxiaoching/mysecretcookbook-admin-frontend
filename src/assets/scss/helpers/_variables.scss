@@ -306,6 +306,7 @@ $warning: $yellow !default;
 $danger: #d12220 !default;
 $light: #f0e9df !default;
 $dark: $gray-900 !default;
+$muted: $gray-600 !default;
 // scss-docs-end theme-color-variables
 
 // scss-docs-start theme-colors-map
@@ -318,7 +319,7 @@ $theme-colors: (
   'danger': $danger,
   'light': $light,
   'dark': $dark,
-  'gray': $gray-200,
+  'muted': $muted,
 ) !default;
 // scss-docs-end theme-colors-map
 
@@ -737,7 +738,9 @@ $small-font-size: 0.875em !default;
 $sub-sup-font-size: 0.75em !default;
 
 // fusv-disable
-$text-muted: var(--#{$prefix}secondary-color) !default; // Deprecated in 5.3.0
+// $text-muted: var(--#{$prefix}secondary-color) !default; // Deprecated in 5.3.0
+$text-muted: $muted !default;
+
 // fusv-enable
 
 $initialism-font-size: $small-font-size !default;
@@ -1237,6 +1240,7 @@ $zindex-levels: (
   1: 1,
   2: 2,
   3: 3,
+  999: 999,
 ) !default;
 // scss-docs-end zindex-levels-map
 

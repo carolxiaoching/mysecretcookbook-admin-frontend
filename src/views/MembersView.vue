@@ -24,7 +24,7 @@
                 class="thumbnail me-4 rounded-circle"
                 v-if="item.avatarImgUrl"
               />
-              <div class="thumbnailDefault me-4 rounded-circle" v-else>
+              <div class="thumbnail me-4 rounded-circle" v-else>
                 <i class="bi bi-person-fill"></i>
               </div>
               {{ item.nickName }}

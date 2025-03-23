@@ -13,7 +13,7 @@
         <div class="modal-body p-0">
           <div class="p-11">
             <h1 class="modal-title title mb-8" id="imageModalLabel">
-              <span class="title-icon bg-dark-subtle">
+              <span class="titleIcon bg-dark-subtle">
                 <i class="bi bi-pencil-fill"></i>
               </span>
               <slot name="modal-header">標題</slot>

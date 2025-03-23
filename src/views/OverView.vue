@@ -23,7 +23,7 @@
       <div class="col-12 col-lg-6" v-for="(chart, index) in chartSections" :key="index">
         <div class="h-100 p-16 bg-white rounded shadow-sm">
           <h2 class="title mb-11">
-            <span class="title-icon bg-secondary-subtle">
+            <span class="titleIcon bg-secondary-subtle">
               <i :class="chart.icon"></i>
             </span>
             <span> {{ chart.title }} </span>
@@ -35,7 +35,7 @@
         <div class="h-100 p-16 bg-white rounded shadow-sm">
           <div class="d-flex justify-content-center align-items-end mb-11">
             <h2 class="title">
-              <span class="title-icon bg-secondary-subtle">
+              <span class="titleIcon bg-secondary-subtle">
                 <i class="bi bi-people-fill"></i>
               </span>
               <span> 最新會員 </span>
@@ -66,7 +66,7 @@
                         class="thumbnail me-8 rounded-circle"
                         v-if="item.avatarImgUrl"
                       />
-                      <div class="thumbnailDefault me-8 rounded-circle" v-else>
+                      <div class="thumbnail me-8 rounded-circle" v-else>
                         <i class="bi bi-person-fill"></i>
                       </div>
                       <p class="flex-fill">
@@ -85,7 +85,7 @@
         <div class="h-100 p-16 bg-white rounded shadow-sm">
           <div class="d-flex justify-content-center align-items-end mb-11">
             <h2 class="title">
-              <span class="title-icon bg-secondary-subtle">
+              <span class="titleIcon bg-secondary-subtle">
                 <i class="bi bi-cookie"></i>
               </span>
               <span> 最新食譜 </span>
@@ -116,7 +116,7 @@
                   <td class="text-center text-xxl-start">
                     <div class="d-flex align-items-center">
                       <img :src="item.coverImgUrl" class="thumbnail me-8" v-if="item.coverImgUrl" />
-                      <div class="thumbnailDefault me-8" v-else>
+                      <div class="thumbnail me-8" v-else>
                         <i class="bi bi-person-fill"></i>
                       </div>
                       <p class="flex-fill">
@@ -209,10 +209,13 @@ const chartSections = ref([
 async function getData() {
   try {
     openLoading();
-    const membersResponse = await apiGetMembers({ noPagination: true });
-    const recipesResponse = await apiGetRecipes({ noPagination: true });
-    const categoriesResponse = await apiGetCategories({ noPagination: true });
-    const tagsResponse = await apiGetTags({ noPagination: true });
+
+    const [membersResponse, recipesResponse, categoriesResponse, tagsResponse] = await Promise.all([
+      apiGetMembers({ noPagination: true }), // 取得會員資料
+      apiGetRecipes({ noPagination: true }), // 取得食譜資料
+      apiGetCategories({ noPagination: true }), // 取得分類資料
+      apiGetTags({ noPagination: true }), // 取得標籤資料
+    ]);
 
     members.value = membersResponse.data.data;
     recipes.value = recipesResponse.data.data;

@@ -28,7 +28,7 @@
           <td class="text-center">
             <div class="d-flex align-items-center">
               <img :src="item.coverImgUrl" class="thumbnail me-4" v-if="item.coverImgUrl" />
-              <div class="thumbnailDefault me-4" v-else>
+              <div class="thumbnail me-4" v-else>
                 <i class="bi bi-person-fill"></i>
               </div>
               {{ item.title }}
@@ -54,7 +54,7 @@
                 class="thumbnail me-4 rounded-circle"
                 v-if="item.user?.avatarImgUrl"
               />
-              <div class="thumbnailDefault me-4 rounded-circle" v-else>
+              <div class="thumbnail me-4 rounded-circle" v-else>
                 <i class="bi bi-person-fill"></i>
               </div>
               {{ item.user?.nickName }}

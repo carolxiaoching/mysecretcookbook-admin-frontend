@@ -20,9 +20,9 @@
           <td class="text-center">
             <div class="d-flex flex-column flex-md-row justify-content-center align-items-center">
               <img :src="item.imageUrl" alt="" class="thumbnail me-md-4" />
-              <a :href="item.imageUrl" target="_blank" class="text-decoration-underline"
-                >圖片連結</a
-              >
+              <a :href="item.imageUrl" target="_blank" class="text-decoration-underline">
+                開啟圖片
+              </a>
             </div>
           </td>
           <td class="d-none d-xxl-table-cell text-center">{{ item.user?.nickName }}</td>

@@ -5,8 +5,13 @@
     </router-link>
   </nav>
 
-  <section class="signin">
-    <VForm class="signinForm" v-slot="{ errors, meta }" @submit="submitForm" ref="form">
+  <section class="signin d-flex justify-content-center align-items-center flex-wrap">
+    <VForm
+      class="signinForm px-8 px-sm-16 px-md-18 py-17 py-sm-18 bg-white rounded-3 shadow"
+      v-slot="{ errors, meta }"
+      @submit="submitForm"
+      ref="form"
+    >
       <h1 class="mb-11 text-center h3">管理員介面</h1>
       <p class="mb-15 text-center text-muted lh-lg">
         歡迎來到我的秘密食譜

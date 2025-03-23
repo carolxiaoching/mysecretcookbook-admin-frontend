@@ -9,11 +9,21 @@
   />
 
   <div v-if="isPreview">
-    <div class="preview">
-      <a href="#" class="previewResetBtn" @click.prevent="resetImage('reset')">
+    <div
+      class="position-relative mb-11 border rounded-3"
+      :class="[imageType === 'icon' ? '' : 'mb-lg-17']"
+    >
+      <a
+        href="#"
+        class="previewResetBtn position-absolute top-0 end-0 px-2 text-white fs-2"
+        @click.prevent="resetImage('reset')"
+      >
         <i class="bi bi-x"></i>
       </a>
-      <div class="previewImage" :style="{ backgroundImage: `url(${previewImageUrl})` }"></div>
+      <div
+        class="previewImage backgroundCover rounded-3"
+        :style="{ backgroundImage: `url(${previewImageUrl})` }"
+      ></div>
     </div>
 
     <div class="text-center">
@@ -24,13 +34,20 @@
   </div>
 
   <div v-else>
-    <label for="image" class="uploadLabel">
+    <label
+      for="image"
+      class="w-100 mb-11 border rounded-3 overflow-hidden"
+      :class="[imageType === 'icon' ? '' : 'mb-xl-17']"
+    >
       <span
-        class="uploadLabelImage"
+        class="uploadLabelImage backgroundCover cursorPoint d-block"
         :style="{ backgroundImage: `url(${tempImageUrl})` }"
         v-if="tempImageUrl"
       ></span>
-      <span class="uploadLabelBtn" v-else>
+      <span
+        class="uploadLabelBtn cursorPoint d-flex flex-column justify-content-center align-items-center fs-5"
+        v-else
+      >
         <i class="bi bi-cloud-arrow-up d-block display-3"></i>
         點擊上傳{{ imageType === 'avatar' ? '頭像' : '封面' }}
       </span>

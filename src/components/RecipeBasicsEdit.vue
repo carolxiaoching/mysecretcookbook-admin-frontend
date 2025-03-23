@@ -11,7 +11,7 @@
       tabindex="0"
     >
       <h2 class="title mb-11">
-        <span class="title-icon bg-secondary-subtle">
+        <span class="titleIcon bg-secondary-subtle">
           <i class="bi bi-image"></i>
         </span>
         <span> 食譜封面</span>
@@ -39,7 +39,7 @@
     </div>
     <div class="p-14 p-md-16 bg-white rounded shadow-sm mb-16">
       <h2 class="title mb-11">
-        <span class="title-icon bg-secondary-subtle">
+        <span class="titleIcon bg-secondary-subtle">
           <i class="bi bi-file-earmark-text"></i>
         </span>
         <span> 基本資料 </span>
@@ -180,7 +180,7 @@
       :class="{ 'border border-danger': errors['食譜標籤'] }"
     >
       <h2 class="title mb-11">
-        <span class="title-icon bg-secondary-subtle">
+        <span class="titleIcon bg-secondary-subtle">
           <i class="bi bi-bookmarks-fill"></i>
         </span>
         <span> 標籤 </span>

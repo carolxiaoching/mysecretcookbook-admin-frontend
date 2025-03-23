@@ -7,7 +7,7 @@
   >
     <div class="mb-16 p-14 p-md-16 bg-white rounded shadow-sm">
       <h2 class="title mb-11">
-        <span class="title-icon bg-secondary-subtle">
+        <span class="titleIcon bg-secondary-subtle">
           <i class="bi bi-diagram-3"></i>
         </span>
         <span> 步驟 </span>
@@ -81,7 +81,7 @@
     </div>
     <div class="mb-16 p-16 bg-white rounded shadow-sm">
       <h2 class="title mb-11">
-        <span class="title-icon bg-secondary-subtle">
+        <span class="titleIcon bg-secondary-subtle">
           <i class="bi bi-journal-text"></i>
         </span>
         <span> 小撇步 </span>

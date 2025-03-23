@@ -18,12 +18,12 @@
         >
           <div class="p-11">
             <h1 class="modal-title title mb-8" id="categoryEditModalLabel">
-              <span class="title-icon bg-dark-subtl">
+              <span class="titleIcon bg-dark-subtl">
                 <i class="bi bi-pencil-fill"></i>
               </span>
               <slot name="modal-header">標題</slot>
             </h1>
-            <div :class="{ 'mb-8': category.createdAt }">
+            <div class="mb-8">
               <label for="title" class="form-label">
                 <span class="text-danger">*</span>
                 分類標題：
@@ -42,6 +42,31 @@
                 required
               />
               <ErrorMessage name="分類標題" class="invalid-feedback" />
+            </div>
+            <div :class="[category.createdAt ? 'mb-16' : 'mb-8']">
+              <label for="title" class="form-label">
+                <span class="text-danger">*</span>
+                分類圖片
+              </label>
+              <VField
+                type="text"
+                id="coverImgUrl"
+                class="d-none"
+                name="分類圖片"
+                v-model="category.categoryImgUrl"
+                rules="required"
+                required
+              />
+              <ErrorMessage name="分類圖片" v-slot="{ message }">
+                <p class="mb-4 text-center text-danger">{{ message }}</p>
+              </ErrorMessage>
+              <div class="flex-fill mx-lg-16">
+                <UploadComponent
+                  :temp-image-url="category.categoryImgUrl"
+                  imageType="icon"
+                  @update-image="uploadImage"
+                />
+              </div>
             </div>
 
             <div v-if="category.createdAt">
@@ -80,6 +105,7 @@ import { ref, watch } from 'vue';
 import { useModal } from '@/scripts/methods';
 import { loadingStore, messageStore } from '@/stores/index';
 import { apiCreateCategory, apiUpdateCategory } from '@/scripts/api';
+import UploadComponent from '@/components/UploadComponent.vue';
 
 const loadingRef = loadingStore();
 const messageRef = messageStore();
@@ -91,6 +117,7 @@ const { openModal, hideModal } = useModal(categoryEditModalRef);
 const category = ref({
   id: '',
   title: '',
+  categoryImgUrl: '',
   createdAt: '',
   updatedAt: '',
 });
@@ -107,6 +134,7 @@ const props = defineProps({
       return {
         id: '',
         title: '',
+        categoryImgUrl: '',
         createdAt: '',
         updatedAt: '',
       };
@@ -127,7 +155,13 @@ async function updateCategory(values, { resetForm }) {
   const msgTitle = category.value.id ? '更新' : '新增';
 
   try {
-    const res = await apiMethod({ title: category.value.title }, category.value.id);
+    const res = await apiMethod(
+      {
+        title: category.value.title,
+        categoryImgUrl: category.value.categoryImgUrl,
+      },
+      category.value.id
+    );
     const { status } = res.data;
 
     if (status === 'success') {
@@ -155,5 +189,10 @@ async function updateCategory(values, { resetForm }) {
     });
     closeLoading();
   }
+}
+
+// 更新圖片
+function uploadImage(imageUrl) {
+  category.value.categoryImgUrl = imageUrl;
 }
 </script>

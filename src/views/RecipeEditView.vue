@@ -1,23 +1,35 @@
 <template>
   <div class="container-fluid">
     <div class="row justify-content-center">
-      <ul class="step">
-        <li class="step-item active" :class="{ 'step-active': step === 1 }">
+      <ul class="d-flex justify-content-center mb-14 mb-md-18">
+        <li
+          class="stepProgressItem active position-relative px-14 py-8 text-center"
+          :class="{ stepProgressActive: step === 1 }"
+        >
           <span class="d-block">STEP 1</span>
           基本資料
-          <span class="step-nav"></span>
+          <span class="stepProgressLine d-block z-999"></span>
         </li>
-        <li class="step-item" :class="{ active: step > 1, 'step-active': step === 2 }">
+        <li
+          class="stepProgressItem position-relative px-14 py-8 text-center"
+          :class="{ active: step > 1, stepProgressActive: step === 2 }"
+        >
           <span class="d-block">STEP 2</span>
           成分與食材
-          <span class="step-nav"></span>
+          <span class="stepProgressLine d-block z-999"></span>
         </li>
-        <li class="step-item" :class="{ active: step > 2, 'step-active': step === 3 }">
+        <li
+          class="stepProgressItem position-relative px-14 py-8 text-center"
+          :class="{ active: step > 2, stepProgressActive: step === 3 }"
+        >
           <span class="d-block">STEP 3</span>
           步驟與備註
-          <span class="step-nav"></span>
+          <span class="stepProgressLine d-block z-999"></span>
         </li>
-        <li class="step-item" :class="{ active: step == 4, 'step-active': step === 4 }">
+        <li
+          class="stepProgressItem position-relative px-14 py-8 text-center"
+          :class="{ active: step == 4, stepProgressActive: step === 4 }"
+        >
           <span class="d-block">STEP 4</span>
           確認與送出
         </li>

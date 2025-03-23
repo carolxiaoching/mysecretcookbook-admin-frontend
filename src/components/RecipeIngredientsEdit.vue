@@ -7,7 +7,7 @@
   >
     <div class="mb-16 p-14 p-md-16 bg-white rounded shadow-sm">
       <h2 class="title mb-11">
-        <span class="title-icon bg-secondary-subtle">
+        <span class="titleIcon bg-secondary-subtle">
           <i class="bi bi-clipboard-data"></i>
         </span>
         <span> 營養成分 </span>
@@ -121,7 +121,7 @@
 
     <div class="mb-16 p-14 p-md-16 bg-white rounded shadow-sm">
       <h2 class="title mb-11">
-        <span class="title-icon bg-secondary-subtle">
+        <span class="titleIcon bg-secondary-subtle">
           <i class="bi bi-cookie"></i>
         </span>
         <span> 食材 </span>
@@ -138,11 +138,11 @@
       >
         <template #item="{ element, index }">
           <li class="mb-8">
-            <div class="ingredientItem">
+            <div class="d-flex flex-wrap flex-md-nowrap">
               <VField
                 type="text"
                 placeholder="食材名稱"
-                class="ingredientName form-control"
+                class="ingredientName mb-4 mb-md-0 me-md-8 order-2 form-control"
                 :name="`ingredients[${index}].ingredientName`"
                 :class="{
                   'is-invalid': errors[`ingredients[${index}].ingredientName`],
@@ -154,7 +154,7 @@
               <VField
                 type="text"
                 placeholder="份量"
-                class="ingredientQty form-control"
+                class="ingredientQty mb-4 mb-md-0 me-md-8 order-3 form-control"
                 :name="`ingredients[${index}].ingredientQty`"
                 :class="{
                   'is-invalid': errors[`ingredients[${index}].ingredientQty`],
@@ -163,7 +163,9 @@
                 rules="required"
                 required
               />
-              <div class="ingredientTool">
+              <div
+                class="ingredientTool d-flex justify-content-end align-items-center order-1 order-md-4"
+              >
                 <a
                   href="#"
                   class="link-danger fs-4 me-4"

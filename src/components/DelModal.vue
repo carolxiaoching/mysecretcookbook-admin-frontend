@@ -12,7 +12,7 @@
       <div class="modal-content overflow-hidden">
         <div class="modal-body p-0">
           <div class="d-flex p-11">
-            <span class="title-icon bg-danger-subtle text-danger">
+            <span class="titleIcon bg-danger-subtle text-danger">
               <i class="bi bi-x-lg"></i>
             </span>
             <div class="flex-fill">
